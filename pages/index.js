@@ -1,28 +1,11 @@
-import { signIn, signOut, useSession } from "next-auth/react";
-
-function AuthLinks() {
-  const { data: session, status } = useSession();
-
-  const loading = status === "loading";
-
-  if (loading) return null;
-
-  return (
-    <>
-      {session ? (
-        <p>
-          <span>Signed in as {session?.user?.email}</span>
-          <button onClick={signOut}>Sign out</button>
-        </p>
-      ) : (
-        <>
-          <button onClick={signIn}>Sign in</button>
-        </>
-      )}
-    </>
-  );
-}
+import Header from '../components/header';
 
 export default function IndexPage() {
-  return <AuthLinks />;
-};
+  return (
+    <div>
+      <Header />
+
+      <h1>Hygraph with NextAuth.js</h1>
+    </div>
+  );
+}
